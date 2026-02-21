@@ -1,65 +1,142 @@
-import Image from "next/image";
+import ProductCard from "@/components/ProductCard";
+// 1. Bring the font back
+import { Dancing_Script } from "next/font/google";
+
+// 2. Configure it
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  weight: ["700"], 
+});
+
+const products = [
+  {
+    id: 1,
+    name: "Pudding Bunga",
+    price: 40000, 
+    image: "/products/pudding-bunga.png", 
+  },
+  {
+    id: 2,
+    name: "Pudding Coklat",
+    price: 40000,
+    image: "/products/pudding-coklat.png",
+  },
+  {
+    id: 3,
+    name: "Pudding Pandan",
+    price: 40000,
+    image: "/products/pudding-pandan.png",
+  },
+  {
+    id: 4,
+    name: "Pudding Buah",
+    price: 40000,
+    image: "/products/pudding-buah.png",
+  },
+  {
+    id: 5,
+    name: "Pudding Matcha",
+    price: 40000,
+    image: "/products/pudding-matcha.png",
+  },
+  {
+    id: 6,
+    name: "Pudding Mango",
+    price: 40000,
+    image: "/products/pudding-mango.png",
+  }
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-white">
+      
+      {/* ================= HEADER & HERO SECTION ================= */}
+      <div 
+        className="relative h-screen bg-cover bg-center" 
+        style={{ 
+          backgroundImage: "url('/images/hero-section.png')",
+          backgroundColor: "#f5f5f5"
+        }}
+      >
+        <div className="absolute inset-0 bg-white/20"></div>
+
+        <header className="relative z-10 flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+          <div className="text-2xl font-extrabold tracking-tight text-black">
+            LANNY&apos;s Bakery
+          </div>
+          
+          <nav className="hidden md:flex space-x-8 font-semibold text-black">
+            <a href="#" className="hover:text-[#8A3D24] transition-colors">Home</a>
+            <a href="#" className="hover:text-[#8A3D24] transition-colors">Blog</a>
+            <a href="#" className="hover:text-[#8A3D24] transition-colors">Contact Us</a>
+            <a href="#" className="hover:text-[#8A3D24] transition-colors">Services</a>
+          </nav>
+        </header>
+
+        <div className="relative z-10 flex flex-col justify-center h-[calc(100vh-100px)] px-8 max-w-7xl mx-auto">
+          <div className="max-w-xl">
+            <h3 className="text-[#a86542] font-bold text-lg mb-2 tracking-wide">
+              Delicious Cafe
+            </h3>
+            
+            {/* 3. Re-applied the font here! */}
+            <h1 className={`${dancingScript.className} text-7xl md:text-8xl text-black mb-10 leading-tight`}>
+              Sweet Treats,<br />
+              Perfect Eats
+            </h1>
+            
+            <div className="flex items-center space-x-6">
+              <a href="#products" className="bg-[#8A3D24] hover:bg-[#6b2f1c] text-white px-8 py-3 rounded border border-[#6b2f1c] font-semibold shadow-md transition-all">
+                Shop Now
+              </a>
+              
+              <button className="flex items-center text-[#c29671] hover:text-[#9e7655] font-semibold transition-colors">
+                Learn More <span className="ml-2">→</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* ================= TOP PRODUCTS SECTION ================= */}
+      <main id="products" className="py-24 px-8 max-w-6xl mx-auto">
+        <div className="mb-16 text-center">
+          {/* Re-applied the font here! */}
+          <h2 className={`${dancingScript.className} text-5xl md:text-6xl text-black`}>
+            Top Products
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {products.map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
         </div>
       </main>
+
+      {/* ================= PROMO BANNER SECTION ================= */}
+      <section 
+        className="relative w-full py-28 mt-12 bg-cover bg-center flex flex-col items-center justify-center"
+        style={{ 
+          backgroundImage: "url('/images/promotion-background.png')", 
+          backgroundColor: "#f9f9f9"
+        }}
+      >
+        <div className="absolute inset-0 bg-white/60"></div>
+
+        <div className="relative z-10 text-center flex flex-col items-center">
+          {/* Re-applied the font here! */}
+          <h2 className={`${dancingScript.className} text-5xl md:text-6xl text-[#8A3D24] leading-tight mb-8`}>
+            20% Off Your <br/> First Order
+          </h2>
+          
+          <button className="bg-[#8A3D24] hover:bg-[#6b2f1c] text-white px-10 py-3 rounded font-medium text-lg shadow-md transition-all">
+            Learn More
+          </button>
+        </div>
+      </section>
+
     </div>
   );
 }
