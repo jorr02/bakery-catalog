@@ -1,5 +1,7 @@
 import ProductCard from "@/components/ProductCard";
-// 1. Bring the font back
+import ExploreMoreSection from "@/components/ExploreMoreSection";
+import FeaturedTreats from "@/components/FeaturedTreats";
+import Footer from "@/components/Footer";
 import { Dancing_Script } from "next/font/google";
 
 // 2. Configure it
@@ -136,6 +138,45 @@ export default function Home() {
           </button>
         </div>
       </section>
+
+      {/* ================= NEW EXPLORE MORE SECTION ================= */}
+      {/* 2. Place the new component here and pass the font class to it */}
+      <ExploreMoreSection fontClass={dancingScript.className} />
+
+
+      {/* ================= ABOUT US BANNER (NEW) ================= */}
+      <section
+        className="relative w-full py-32 bg-cover bg-center flex flex-col items-center justify-center mt-12"
+        style={{
+          // I used a dark rustic bread/slate placeholder image from Unsplash
+          backgroundImage: "url('/images/about-us-background.png')",
+          backgroundColor: "#1a1a1a",
+        }}
+      >
+        {/* Dark overlay to make the white text pop, matching your screenshot */}
+        <div className="absolute inset-0 bg-black/60"></div>
+
+        <div className="relative z-10 text-center flex flex-col items-center px-6">
+          <h2 className={`${dancingScript.className} text-5xl md:text-6xl text-white mb-4`}>
+            About us
+          </h2>
+          
+          <p className="text-gray-300 text-lg md:text-xl font-medium tracking-wide mb-8">
+            We deliver the best at the best price!
+          </p>
+
+          <button className="bg-[#8A3D24] hover:bg-[#6b2f1c] text-white px-10 py-3 rounded font-medium text-lg shadow-md transition-all">
+            Read More
+          </button>
+        </div>
+      </section>
+
+      {/* ================= FEATURED TREATS SECTION (NEW) ================= */}
+      {/* 2. Added the new section here! */}
+      <FeaturedTreats fontClass={dancingScript.className} />
+
+      {/* ================= FOOTER SECTION (NEW) ================= */}
+      <Footer />
 
     </div>
   );
